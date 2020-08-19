@@ -1,0 +1,3 @@
+[submodule "vendor/kasey"]
+	path = vendor/kasey
+	url = git@github.com:beflagrant/kasey

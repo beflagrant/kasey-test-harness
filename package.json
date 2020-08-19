@@ -1,0 +1,19 @@
+{
+  "name": "kasey_test_dummy",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/actiontext": "^6.0.3-2",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.2.1",
+    "core-js": "^3.6.5",
+    "regenerator-runtime": "^0.13.7",
+    "trix": "^1.2.0",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
+}

@@ -11,6 +11,9 @@ jobs:
       - checkout
       - restore_cache:
           key: kasey-26-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: load kasey submodule
+          command: git submodule update --init
       - ruby/install-deps:
           with-cache: false
 
@@ -37,6 +40,9 @@ jobs:
       - checkout
       - restore_cache:
           key: kasey-25-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: load kasey submodule
+          command: git submodule update --init
       - ruby/install-deps:
           with-cache: false
       - save_cache:
@@ -59,6 +65,9 @@ jobs:
       - checkout
       - restore_cache:
           key: kasey-27-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: load kasey submodule
+          command: git submodule update --init
       - ruby/install-deps:
           with-cache: false
       - save_cache:

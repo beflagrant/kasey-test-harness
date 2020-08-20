@@ -1,4 +1,4 @@
-# README : Kasey Test Dummy
+# README : Kasey Test Harness
 
 This repo exists to test and develop the `kasey` engine, found
 [here](https://github.com/beflagrant/kasey). Kasey is a git submodule,
@@ -13,6 +13,7 @@ This application was developed with Ruby 2.7.1, and Rails 6.0.3 initially. It
 runs using sqlite3.
 
 ```
+$> git submodule update --init
 $> bundle
 $> bin/rails db:create db:migrate
 $> bundle exec rspec

@@ -20,6 +20,7 @@ RSpec.describe Kasey::KasesController, type: :controller do
         kases.each do |kase|
           expect(controller).to receive(:has_access?)
             .with(admin, kase)
+            .at_least(1).time
             .and_return(true)
         end
 

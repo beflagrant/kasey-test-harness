@@ -10,7 +10,9 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  additional_paths: [engine/kasey/app/javascript]
+  additional_paths:
+    - app/assets
+    - engine/kasey/app/javascript
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
@@ -65,7 +67,7 @@ development:
     disable_host_check: true
     use_local_ip: false
     quiet: false
-    pretty: false
+    pretty: true
     headers:
       'Access-Control-Allow-Origin': '*'
     watch_options:

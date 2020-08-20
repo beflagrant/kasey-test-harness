@@ -50,6 +50,9 @@ $> bin/rails g kasey:install
 $> bin/rails g devise User
 ```
 
+The file `config/initializers/kasey.rb` was updated to reflect Devise methods,
+since that's what we're using.
+
 At this point, we have a basic install, with minimal configuration.
 
 As this repo will take over from kasey/test/dummy, we import the controllers,

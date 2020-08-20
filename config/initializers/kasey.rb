@@ -22,8 +22,8 @@
 #     end
 
 Kasey.configure do |c|
-  c.auth_required = false
-  c.authenticate_function = :configure_authenticate_function_in_kasey_initializer
-  c.authorize_function = ->(user, kase) { raise 'configure authorize function in kasey initializer' } 
-  c.authenticated_user_function = :configure_authenticated_user_function_in_kasey_initializer
+  c.auth_required = true
+  c.authenticate_function = :authenticate_user!
+  c.authorize_function = ->(user, kase) { true }
+  c.authenticated_user_function = :current_user
 end

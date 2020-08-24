@@ -12,7 +12,7 @@ but this proved unwieldy.
 This application was developed with Ruby 2.7.1, and Rails 6.0.3 initially. It
 runs using sqlite3.
 
-```
+```bash
 $> git submodule update --init
 $> bundle
 $> bin/rails db:create db:migrate

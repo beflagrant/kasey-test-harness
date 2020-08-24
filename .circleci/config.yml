@@ -14,8 +14,7 @@ jobs:
       - run:
           name: load kasey submodule
           command: git submodule update --init
-      - ruby/install-deps:
-          with-cache: false
+      - ruby/install-deps
 
       # Bundle install dependencies
       #- run: bundle install --path vendor/bundle
@@ -43,8 +42,7 @@ jobs:
       - run:
           name: load kasey submodule
           command: git submodule update --init
-      - ruby/install-deps:
-          with-cache: false
+      - ruby/install-deps
       - save_cache:
           key: kasey-25-{{ checksum "Gemfile.lock" }}
           paths:
@@ -68,8 +66,7 @@ jobs:
       - run:
           name: load kasey submodule
           command: git submodule update --init
-      - ruby/install-deps:
-          with-cache: false
+      - ruby/install-deps
       - save_cache:
           key: kasey-27-{{ checksum "Gemfile.lock" }}
           paths:

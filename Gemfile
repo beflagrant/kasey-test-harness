@@ -42,6 +42,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_bot'
   gem 'rspec_junit_formatter', '~> 0.4.1'
+  gem 'simplecov', require: false
 end
 
 group :development do

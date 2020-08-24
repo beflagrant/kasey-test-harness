@@ -15,30 +15,103 @@
 RSpec.describe "/kasey/kases", type: :request do
   let(:kase) { create(:intake).kase }
 
-  before { sign_in FactoryBot.create(:admin) }
+  describe 'when not authenticated or authorized' do
+    before do
+      # authenticate! should redirect in all cases unless authenticated
+      Kasey.configuration.authorize_function = ->(u,k) { true }
+    end
 
-  describe "GET /index" do
-    it "renders a successful response" do
-      kase # exists
-      get kasey.kases_url
-      expect(response).to be_successful
+    describe "GET /index" do
+      it "does not render an unsuccessful response" do
+        kase # exists
+        get kasey.kases_url
+        expect(response).not_to be_successful
+      end
+    end
+
+    describe "GET /show" do
+      it "does not render a successful response" do
+        get kasey.kase_url(kase)
+        expect(response).not_to be_successful
+      end
+    end
+
+    describe "DELETE /destroy" do
+
+      it "does not close the requested kase" do
+        kase.review!
+
+        delete kasey.kase_url(kase)
+        expect(response).not_to be_successful
+        expect(kase.reload.aasm.current_state).to equal(:reviewed)
+      end
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
-      get kasey.kase_url(kase)
-      expect(response).to be_successful
+  describe 'when authenticated and authorized' do
+    before { sign_in FactoryBot.create(:admin) }
+
+    before do
+      Kasey.configuration.authorize_function = ->(u,k) { true }
+    end
+
+    describe "GET /index" do
+      it "renders a successful response" do
+        kase # exists
+        get kasey.kases_url
+        expect(response).to be_successful
+      end
+    end
+
+    describe "GET /show" do
+      it "renders a successful response" do
+        get kasey.kase_url(kase)
+        expect(response).to be_successful
+      end
+    end
+
+    describe "DELETE /destroy" do
+
+      it "closes the requested kase" do
+        kase.review!
+
+        delete kasey.kase_url(kase)
+        expect(kase.reload.aasm.current_state).to equal(:closed)
+      end
     end
   end
 
-  describe "DELETE /destroy" do
+  describe 'when authenticated but not authorized' do
+    before { sign_in FactoryBot.create(:user) }
 
-    it "closes the requested kase" do
-      kase.review!
+    before do
+      Kasey.configuration.authorize_function = ->(u,k) { false }
+    end
 
-      delete kasey.kase_url(kase)
-      expect(kase.reload.aasm.current_state).to equal(:closed)
+    describe "GET /index" do
+      it "renders a successful response" do
+        kase # exists
+        get kasey.kases_url
+        expect(response).to be_successful
+      end
+    end
+
+    describe "GET /show" do
+      it "renders a successful response" do
+        get kasey.kase_url(kase)
+        expect(response).not_to be_successful
+      end
+    end
+
+    describe "DELETE /destroy" do
+
+      it "closes the requested kase" do
+        kase.review!
+
+        delete kasey.kase_url(kase)
+        expect(response).not_to be_successful
+        expect(kase.reload.aasm.current_state).to equal(:reviewed)
+      end
     end
   end
 end

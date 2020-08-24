@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
 
   def render_not_found
     respond_to do |format|
-      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.html do
+        render file: Rails.root.join('public', '404.html'),
+               layout: false,
+               status: :not_found
+      end
       format.xml  { head :not_found }
       format.any  { head :not_found }
     end

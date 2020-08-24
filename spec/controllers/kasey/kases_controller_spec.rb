@@ -5,6 +5,10 @@ RSpec.describe Kasey::KasesController, type: :controller do
   routes { Kasey::Engine.routes }
   render_views
 
+  before do
+    initialize_kasey
+  end
+
   context 'when the user is authorized' do
     let(:admin) { User.find(2) || create(:admin) }
 

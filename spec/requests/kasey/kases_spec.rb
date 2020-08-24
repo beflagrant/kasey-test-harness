@@ -15,6 +15,10 @@
 RSpec.describe "/kasey/kases", type: :request do
   let(:kase) { create(:intake).kase }
 
+  before do
+    initialize_kasey
+  end
+
   describe 'when not authenticated or authorized' do
     before do
       # authenticate! should redirect in all cases unless authenticated

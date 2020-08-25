@@ -54,10 +54,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_170445) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.string "intake_type", null: false
     t.integer "intake_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["intake_id"], name: "index_assignments_on_intake_id"
+    t.index ["intake_type", "intake_id"], name: "index_assignments_on_intake_type_and_intake_id"
     t.index ["user_id"], name: "index_assignments_on_user_id"
   end
 
@@ -99,6 +100,5 @@ ActiveRecord::Schema.define(version: 2020_08_25_170445) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "assignments", "intakes"
   add_foreign_key "assignments", "users"
 end

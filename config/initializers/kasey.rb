@@ -24,8 +24,9 @@
 
 Kasey.configure do |c|
   c.auth_required = true
-  c.routing_pattern = /kasey/i
   c.authenticate_function = :authenticate_user!
-  c.authorize_function = ->(user, kase) { true }
   c.authenticated_user_function = :current_user
+  c.authorize_function = ->(user, kase) { true }
+  c.email_domain = 'kasey-test-harness.com'
+  c.routing_pattern = /kasey/i
 end

@@ -6,6 +6,7 @@ def initialize_kasey
     c.authorize_function = ->(user, kase) { true }
     # from devise
     c.authenticated_user_function = :current_user
+    c.email_domain = 'testing-kasey.com'
     c.routing_pattern = /kasey/i
   end
 end

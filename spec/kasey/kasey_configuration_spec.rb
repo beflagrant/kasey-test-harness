@@ -50,6 +50,14 @@ describe Kasey do
       }.to raise_error Kasey::ConfigurationError
     end
 
+    it 'raises an error if .email_domain is not a String' do
+      expect {
+        Kasey.configure do |c|
+          c.email_domain = :still_not_valid
+        end
+      }.to raise_error Kasey::ConfigurationError
+    end
+
     it 'configures Kasey when configured with Procs' do
       expect {
         Kasey.configure do |c|

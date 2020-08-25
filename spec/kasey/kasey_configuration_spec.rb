@@ -42,6 +42,14 @@ describe Kasey do
       }.to raise_error Kasey::ConfigurationError
     end
 
+    it 'raises an error if .routing_pattern is not a Regexp or a String' do
+      expect {
+        Kasey.configure do |c|
+          c.routing_pattern = :not_valid
+        end
+      }.to raise_error Kasey::ConfigurationError
+    end
+
     it 'configures Kasey when configured with Procs' do
       expect {
         Kasey.configure do |c|

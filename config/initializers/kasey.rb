@@ -5,7 +5,8 @@
 # the rest of the configuration parameters can be a :symbol that is
 # the name of a function to call, or a -> { lambda }. in particular,
 # `authorize_function` will take a lambda with two arguments, user and
-# kase.
+# kase. `routing_pattern` takes a regex that indicates what pattern
+# incoming mail should match to route to kasey
 #
 # these configured params will be called from a controller inheriting from
 # ::ApplicationController, so any helpers or methods defined there can be
@@ -23,6 +24,7 @@
 
 Kasey.configure do |c|
   c.auth_required = true
+  c.routing_pattern = /kasey/i
   c.authenticate_function = :authenticate_user!
   c.authorize_function = ->(user, kase) { true }
   c.authenticated_user_function = :current_user

@@ -3,6 +3,8 @@ require 'simplecov'
 SimpleCov.start
 
 require 'spec_helper'
+require 'webdrivers'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
@@ -50,6 +52,9 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Warden::Test::Helpers
   config.extend DeviseControllerHelpers, type: :controller
+
+  ## capybara helpers!
+  config.include Capybara::DSL
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false

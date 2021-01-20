@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Outtakes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>N decimal</th>
+      <th>N float</th>
+      <th>N integer</th>
+      <th>Is ok</th>
+      <th>Note</th>
+      <th>Birthday</th>
+      <th>Local noon</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @outtakes.each do |outtake| %>
+      <tr>
+        <td><%= outtake.full_name %></td>
+        <td><%= outtake.n_decimal %></td>
+        <td><%= outtake.n_float %></td>
+        <td><%= outtake.n_integer %></td>
+        <td><%= outtake.is_ok %></td>
+        <td><%= outtake.note %></td>
+        <td><%= outtake.birthday %></td>
+        <td><%= outtake.local_noon %></td>
+        <td><%= link_to 'Show', outtake %></td>
+        <td><%= link_to 'Edit', edit_outtake_path(outtake) %></td>
+        <td><%= link_to 'Destroy', outtake, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Outtake', new_outtake_path %>

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @outtake.full_name %>
+</p>
+
+<p>
+  <strong>N decimal:</strong>
+  <%= @outtake.n_decimal %>
+</p>
+
+<p>
+  <strong>N float:</strong>
+  <%= @outtake.n_float %>
+</p>
+
+<p>
+  <strong>N integer:</strong>
+  <%= @outtake.n_integer %>
+</p>
+
+<p>
+  <strong>Is ok:</strong>
+  <%= @outtake.is_ok %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @outtake.note %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @outtake.birthday %>
+</p>
+
+<p>
+  <strong>Local noon:</strong>
+  <%= @outtake.local_noon %>
+</p>
+
+<%= link_to 'Edit', edit_outtake_path(@outtake) %> |
+<%= link_to 'Back', outtakes_path %>

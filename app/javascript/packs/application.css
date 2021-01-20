@@ -15,7 +15,8 @@
  */
 
 @import "./actiontext.scss";
+@import "./scaffold.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-h1 {
-  color: red;
-}

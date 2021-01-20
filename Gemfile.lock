@@ -1,7 +1,7 @@
 PATH
   remote: vendor/kasey
   specs:
-    kasey (0.1.0)
+    kasey (0.1.1)
       aasm
       image_processing (~> 1.2)
       rails (~> 6.0.3, >= 6.0.3.3)
